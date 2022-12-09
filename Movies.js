@@ -1,10 +1,11 @@
-import { TouchableOpacity,SafeAreaView,Text, View, ScrollView, StyleSheet, FlatList, Button } from "react-native";
+import { TouchableHighlight,SafeAreaView,Text, View, ScrollView, StyleSheet, FlatList, Button } from "react-native";
 import { useWindowDimensions } from 'react-native';
 import { useState } from "react";
 import { Animated } from "react-native";
 import React from "react";
 import Video from 'react-native-video';
 import YoutubePlayer from 'react-native-youtube-iframe';
+
 
 export default function Movies () {
     const { height, width } = useWindowDimensions();
@@ -79,11 +80,11 @@ export default function Movies () {
         ItemSeparatorComponent={showsSeparator}
         renderItem={({item}) => 
         <SafeAreaView style={{alignItems:'center',}}>
-          <TouchableOpacity>
-            <Text style={styles.titles}onPress={()=>{setCurrShow(item)}}>
+          <TouchableHighlight onPress={()=>{setCurrShow(item)}}>
+            <Text style={styles.titles}>
                {item}
              </Text>
-          </TouchableOpacity>
+          </TouchableHighlight>
 </SafeAreaView>}
        />
       );
@@ -121,8 +122,9 @@ const styles = StyleSheet.create({
         marginTop: 0,
       },
       titles: {
+        backgroundColor: 'white',
         textAlign: 'center',
-        width: 300,
+        width: 500,
         fontWeight: 'bold',
         color: 'black',
         fontSize: 18,

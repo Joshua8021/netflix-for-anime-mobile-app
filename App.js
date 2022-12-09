@@ -7,21 +7,31 @@ import Home from './Home.js';
 import Movies from './Movies.js';
 import About from './About.js';
 
+
+
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
+
 export default function App() {
+  
   const drawer = useRef(null);
   const [tab, setTab] = useState('home');
   const navigationView = () => (
       <View style={{
     flex: 1,
     alignItems: "center",
-    padding: 16,}}>
-        <TouchableHighlight style={{flexDirection:'column'}}>
-        <Text onPress={() =>{setTab('home');drawer.current.closeDrawer()}} style={styles.btmbutton}>Home</Text>
-        <Text onPress={() =>{setTab('Movies');drawer.current.closeDrawer()}} style={styles.btmbutton}>Movies</Text>
-        <Text onPress={() =>{setTab('About');drawer.current.closeDrawer()}} style={styles.btmbutton}>About us</Text>
-        </TouchableHighlight>
+    padding: 16,
+    }}>
+        
+          <TouchableHighlight style={{marginTop:40,}} onPress={() =>{setTab('home');drawer.current.closeDrawer()}}>
+            <Text  style={styles.btmbutton}>Home</Text>
+          </TouchableHighlight>
+          <TouchableHighlight style={{marginTop:40,}} onPress={() =>{setTab('Movies');drawer.current.closeDrawer()}} >
+            <Text  style={styles.btmbutton}>Movies</Text>
+          </TouchableHighlight>
+          <TouchableHighlight style={{marginTop:40,}} onPress={() =>{setTab('About');drawer.current.closeDrawer()}} >
+            <Text  style={styles.btmbutton}>About us</Text>
+          </TouchableHighlight>
       </View>
     
   );
@@ -43,23 +53,33 @@ export default function App() {
       );
     }
   }
+  const btmNav =() => {
+    return (
+      
+      <btm.Navigator>
+        <btm.Screen name="Home" component={Home} />
+        <btm.Screen name="Settings" component={About} />
+      </btm.Navigator>
+      
+    );
+  }
   return (
     <>
-    
-    
     <DrawerLayoutAndroid
     ref={drawer}
     drawerWidth={300}
     drawerPosition='right'
     renderNavigationView={navigationView}
   >
+    
   <View style={styles.header}>
     <Text style={styles.head}>CRUNCHYLOL</Text>
+    <TouchableHighlight style={{alignSelf:'center',marginRight: 10,borderRadius: 5,}} onPress={() => drawer.current.openDrawer()}>
     <Text
-    style={styles.menu}
-    onPress={() => drawer.current.openDrawer()} >
+    style={styles.menu}>
       Menu
     </Text>
+    </TouchableHighlight>
     
     </View>
     <View style={styles.container}>
@@ -67,7 +87,7 @@ export default function App() {
       {tabViews()}
       </View>
     </View>
-    
+   
     </DrawerLayoutAndroid>
     </>
     
@@ -90,11 +110,11 @@ const styles = StyleSheet.create({
      alignSelf:'center'
   },
   btmbutton: {
+    fllex:1,
     textAlign: 'center',
     height: 30,
     fontSize: 18,
     alignSelf: 'flex-start',
-    marginTop: 40,
     alignSelf: 'stretch',
     borderBottomColor: 'grey',
     borderWidth: 1,
@@ -114,10 +134,10 @@ const styles = StyleSheet.create({
     borderWidth:1,
     paddingLeft:5,
     paddingRight:5,
-    marginRight:5,
     backgroundColor:'gray',
     fontWeight:'bold',
     color:'white',
+    borderRadius: 5,
   },
   head: {
     fontSize:18,
