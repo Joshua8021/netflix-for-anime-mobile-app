@@ -13,7 +13,6 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 export default function App() {
-  
   const drawer = useRef(null);
   const [tab, setTab] = useState('home');
   const navigationView = () => (
@@ -27,7 +26,7 @@ export default function App() {
             <Text  style={styles.btmbutton}>Home</Text>
           </TouchableHighlight>
           <TouchableHighlight style={{marginTop:40,}} onPress={() =>{setTab('Movies');drawer.current.closeDrawer()}} >
-            <Text  style={styles.btmbutton}>Movies</Text>
+            <Text  style={styles.btmbutton}>Watch Anime</Text>
           </TouchableHighlight>
           <TouchableHighlight style={{marginTop:40,}} onPress={() =>{setTab('About');drawer.current.closeDrawer()}} >
             <Text  style={styles.btmbutton}>About us</Text>
@@ -52,16 +51,6 @@ export default function App() {
         <About />
       );
     }
-  }
-  const btmNav =() => {
-    return (
-      
-      <btm.Navigator>
-        <btm.Screen name="Home" component={Home} />
-        <btm.Screen name="Settings" component={About} />
-      </btm.Navigator>
-      
-    );
   }
   return (
     <>

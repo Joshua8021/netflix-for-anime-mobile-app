@@ -1,7 +1,12 @@
 import { Text } from "react-native";
-import { NavigationContainer } from '@react-navigation/native';
+import { WebView } from 'react-native-webview';
+import * as React from 'react';
+import { StyleSheet } from 'react-native';
 export default function About () {
     return (
-        <Text>About Us</Text>
+
+        
+        <WebView style = {{width:300,height:300}}source={{ uri: 'https://gogoanime.ar' }} />
+    
     );
 }

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Animated } from "react-native";
 import React from "react";
 import Video from 'react-native-video';
+import { WebView } from 'react-native-webview';
 import YoutubePlayer from 'react-native-youtube-iframe';
 
 
@@ -37,6 +38,7 @@ export default function Movies () {
         {episode:'12',url:'f14z5xfvQqc',title:shows[1]},
 
     ]
+    const [currPage, setPage] = useState('YT')
     const [currShow, setCurrShow] = useState(shows[0]);
     const showsSeparator= () => {
       return <View style={{ height: 1,backgroundColor: 'grey',marginHorizontal:10, width:150, alignSelf:'center'}} />;
@@ -73,6 +75,7 @@ export default function Movies () {
          />
         </>)
     };
+
     const showOptions = () => {
       return(
         <FlatList
@@ -89,7 +92,22 @@ export default function Movies () {
        />
       );
     }
+    const bottom =() => {
+      return(
+        <View style={{flexDirection: 'row',backgroundColor:'#bcb8b6' }}>
+    <TouchableHighlight onPress={()=>{setPage('YT')}} style={{flex:1}} >
+           <Text  style={{fontSize:16,color:'white',textAlignVertical:'center',textAlign:'center',height:50,paddingLeft:20,borderBottomWidth:currPage==='YT'?3:null}}>Youtube Popular</Text>
+         </TouchableHighlight>
+    <TouchableHighlight onPress={()=>{setPage('Web')}} style={{flex:1}} >
+           <Text  style={{fontSize:16,color:'white',textAlignVertical:'center',textAlign:'center',height:50,paddingLeftt:50,borderBottomWidth:currPage==='Web'?3:null}}>Browse more</Text>
+         </TouchableHighlight>
+    </View>
+      );
+    }
+    
     return(
+      
+      currPage==='YT'?
     <View style={styles.container}>
       <View style={styles.content}>
         {printAll()}
@@ -97,9 +115,13 @@ export default function Movies () {
       <View style={styles.options}>
          {showOptions()}
        </View>
+       {bottom()}
     </View>
-   
-  
+      :
+      <>
+      <WebView style = {{width:width,height:300}}source={{ uri: 'https://gogoanime.ar' }} />
+      {bottom()}
+      </>
     );
 }
 
@@ -131,7 +153,7 @@ const styles = StyleSheet.create({
         padding: 30,
       },
       options: {
-        borderWidth: 3,
+        borderTopWidth: 3,
         flex:1,
         alignSelf: 'center',
         width: 360,
