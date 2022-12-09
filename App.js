@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { DrawerLayoutAndroid,TouchableOpacity,StyleSheet, Text, View, ScrollView, Button } from 'react-native';
+import { TouchableHighlight,DrawerLayoutAndroid,TouchableOpacity,StyleSheet, Text, View, ScrollView, Button } from 'react-native';
 import { useWindowDimensions } from 'react-native';
 import { Dimensions } from 'react-native';
 import React, {useRef, useState } from 'react';
@@ -17,11 +17,11 @@ export default function App() {
     flex: 1,
     alignItems: "center",
     padding: 16,}}>
-        <TouchableOpacity style={{flexDirection:'column'}}>
+        <TouchableHighlight style={{flexDirection:'column'}}>
         <Text onPress={() =>{setTab('home');drawer.current.closeDrawer()}} style={styles.btmbutton}>Home</Text>
         <Text onPress={() =>{setTab('Movies');drawer.current.closeDrawer()}} style={styles.btmbutton}>Movies</Text>
         <Text onPress={() =>{setTab('About');drawer.current.closeDrawer()}} style={styles.btmbutton}>About us</Text>
-        </TouchableOpacity>
+        </TouchableHighlight>
       </View>
     
   );
