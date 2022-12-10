@@ -16,6 +16,7 @@ const windowHeight = Dimensions.get('window').height;
 export default function App() {
   const drawer = useRef(null);
   const [tab, setTab] = useState('home');
+  //Android drawer Layout
   const navigationView = () => (
       <View style={{
     flex: 1,
@@ -35,7 +36,7 @@ export default function App() {
       </View>
     
   );
-  
+  //if else for tab rendering
   const tabViews = () => {
     if(tab==="home"){
       return(
@@ -53,7 +54,9 @@ export default function App() {
       );
     }
   }
+
   return (
+    //Main Layout
     <>
     <DrawerLayoutAndroid
     ref={drawer}

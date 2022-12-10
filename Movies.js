@@ -84,15 +84,17 @@ export default function Movies () {
     
       return <View style={{ height: 1,backgroundColor: 'grey',marginHorizontal:10, width:150, alignSelf:'center'}} />;
     };
-    //Error: large list - fixed (y)
+    
     const filter=()=>{
+      //filters videos to be rendered when the title is clicked so that it only shows clicked anime title
       return episodes.filter(episodes => episodes.title===currShow);
     }
     const filterBySearch = () =>{
+      //returns shows with searched keywords
       return shows.filter(shows => shows.includes(search));
     }
     const printAll= () => {
-      
+      //Vide content layout
         return (
           <>
           <FlatList
@@ -120,7 +122,7 @@ export default function Movies () {
          />
         </>)
     };
-
+   //show titles layout
     const showOptions = () => {
       return(
         <FlatList
@@ -137,6 +139,7 @@ export default function Movies () {
        />
       );
     }
+    //Bottom buttons layout
     const bottom =() => {
       if(currPage==='Web')
       {alert('Website might show ads while playing video')}
@@ -151,6 +154,7 @@ export default function Movies () {
     </View>
       );
     }
+    //searchbar layout
     const searchBar =() =>{
       return (
         <>
@@ -168,7 +172,7 @@ export default function Movies () {
       );
    }
     return(
-      
+      //Main Layout
       currPage==='YT'?
     <View style={styles.container}>
       <View style={styles.content}>
