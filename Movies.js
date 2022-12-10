@@ -232,7 +232,7 @@ export default function Movies () {
               backgroundColor:'#bcb8b6',
               borderRadius:7}}
               android_ripple={{color: 'black', borderless: false}}
-              onPress={()=>{setDisplayEpisodes(true)}}>
+              onPress={()=>{setDisplayEpisodes(true);setCurrShow(item.title)}}>
                 <Text style={{fontWeight:'bold',fontSize:20,color:'white',}}>
                   Episodes
                 </Text>
