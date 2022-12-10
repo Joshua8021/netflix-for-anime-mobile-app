@@ -1,5 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
-import { TouchableHighlight,DrawerLayoutAndroid,TouchableOpacity,StyleSheet, Text, View, ScrollView, Button } from 'react-native';
+
+import { StatusBar,TouchableHighlight,DrawerLayoutAndroid,TouchableOpacity,StyleSheet, Text, View, ScrollView, Button } from 'react-native';
 import { useWindowDimensions } from 'react-native';
 import { Dimensions } from 'react-native';
 import React, {useRef, useState } from 'react';
@@ -58,6 +58,9 @@ export default function App() {
   return (
     //Main Layout
     <>
+    <StatusBar 
+    barStyle={'light-content'}
+    backgroundColor="#bcb8b6" />
     <DrawerLayoutAndroid
     ref={drawer}
     drawerWidth={300}
@@ -65,16 +68,15 @@ export default function App() {
     renderNavigationView={navigationView}
   >
     
+    
   <View style={styles.header}>
     <Text style={styles.head}>CRUNCHYLOL</Text>
-    <TouchableHighlight style={{alignSelf:'center',}} onPress={() => drawer.current.openDrawer()}>
+    <TouchableHighlight style={{alignSelf:'auto',}} onPress={() => drawer.current.openDrawer()}>
     <Text
     style={styles.menu}>
-      <AntDesign name="menu-unfold" size={32} color="black" />
+      <AntDesign name="menu-unfold" size={32} color="white" />
     </Text>
-    
     </TouchableHighlight>
-    
     </View>
     <View style={styles.container}>
       <View style={styles.container}>
@@ -116,21 +118,17 @@ const styles = StyleSheet.create({
     backgroundColor: 'whitesmoke'
   },
   header: {
-    marginTop:23,
-    height:35,
-    borderWidth:1,
+    height:40,
+    borderBottomWidth:1,
     flexDirection: 'row',
     backgroundColor: '#bcb8b6',
   },
   menu: {
-    textAlignVertical:'center',
-    fontSize:20,
-    alignSelf:'center',
+    
+    alignSelf:'auto',
     borderLeftWidth:1,
     paddingLeft:15,
     paddingRight:5,
-    backgroundColor:'white',
-    color:'white',
   },
   head: {
     fontSize:18,
