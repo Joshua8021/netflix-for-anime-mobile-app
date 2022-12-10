@@ -11,6 +11,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 
 export default function Movies () {
+    const gogoUrl= 'https://gogoanime.ar';
     const { height, width } = useWindowDimensions();
     const shows = ['classroom of the elite', 'spy x family', 'the devil is a part-timer!', 'one punch man', 'title,5', 'title5', 'title6']
     const episodes=[
@@ -194,7 +195,7 @@ export default function Movies () {
     </View>
       :
       <>
-      <WebView style = {{width:width,height:300}}source={{ uri: 'https://gogoanime.ar' }} />
+      <WebView style = {{width:width,height:300}}source={{ uri: gogoUrl }} />
       {bottom()}
       </>
     );
