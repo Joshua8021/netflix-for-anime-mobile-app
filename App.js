@@ -6,6 +6,7 @@ import React, {useRef, useState } from 'react';
 import Home from './Home.js';
 import Movies from './Movies.js';
 import About from './About.js';
+import { AntDesign } from '@expo/vector-icons'; 
 
 
 
@@ -63,11 +64,12 @@ export default function App() {
     
   <View style={styles.header}>
     <Text style={styles.head}>CRUNCHYLOL</Text>
-    <TouchableHighlight style={{alignSelf:'center',marginRight: 10,borderRadius: 5,}} onPress={() => drawer.current.openDrawer()}>
+    <TouchableHighlight style={{alignSelf:'center',}} onPress={() => drawer.current.openDrawer()}>
     <Text
     style={styles.menu}>
-      Menu
+      <AntDesign name="menu-unfold" size={32} color="black" />
     </Text>
+    
     </TouchableHighlight>
     
     </View>
@@ -118,15 +120,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#bcb8b6',
   },
   menu: {
-    fontSize:18,
+    textAlignVertical:'center',
+    fontSize:20,
     alignSelf:'center',
-    borderWidth:1,
-    paddingLeft:5,
+    borderLeftWidth:1,
+    paddingLeft:15,
     paddingRight:5,
-    backgroundColor:'gray',
-    fontWeight:'bold',
+    backgroundColor:'white',
     color:'white',
-    borderRadius: 5,
   },
   head: {
     fontSize:18,
