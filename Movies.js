@@ -9,7 +9,6 @@ import { EvilIcons } from '@expo/vector-icons';
 import Dropdown from 'react-native-select-dropdown'
 import { Ionicons } from '@expo/vector-icons'; 
 
-
 export default function Movies () {
     const gogoUrl= 'https://gogoanime.ar';
     const { height, width } = useWindowDimensions();
@@ -38,6 +37,43 @@ export default function Movies () {
                    banner: 'https://c4.wallpaperflare.com/wallpaper/519/207/806/saitama-one-punch-man-anime-wallpaper-preview.jpg',
                    synop: 'In this new action-comedy, everything about a young man named Saitama screams "AVERAGE," from his lifeless expression, to his bald head, to his unimpressive physique. However, this average-looking fellow doesn t have your average problem... He s actually a superhero that s looking for tough opponents! The problem is, every time he finds a promising candidate he beats the snot out of them in one punch. Can Saitama finally find an evil villain strong enough to challenge him? Follow Saitama through his hilarious romps as he searches for new bad guys to challenge!'
                   },
+                  {
+                    title:'WELCOME TO DEMON SCHOOL! IRUMA-KUN',
+                    trailer: '82TSlacfBzc',
+                    banner:'https://i.ytimg.com/vi/IOPA5b_m6TA/maxresdefault.jpg',
+                    synop:'Suzuki Iruma has been sold to the demon by his irresponsible parents in exchange for money. Surprisingly, next thing he knows, he is living with the demon and has been transferred into a school in the Demon World...',
+                  },
+                  {
+                    title:'ASSASSINATION CLASSROOM',
+                    trailer: 'Qfn-E3dZXL8',
+                    banner:'https://images.alphacoders.com/605/thumbbig-605582.webp',
+                    synop:'A humorous and action-packed story about a class of misfits who are trying to kill their new teacher – an alien octopus with bizarre powers and super strength! The teacher has just destroyed the moon and is threatening to destroy the earth – unless his students can destroy him first. What makes things more complicated is that he s the best teacher they ve ever had!'
+                  },
+                  {
+                    title:'CAUTIOUS HERO: THE HERO IS OVERPOWERED BUT OVERLY CAUTIOUS',
+                    trailer: 'kuOmOD2lCPA',
+                    banner:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpLQa01hUQ5K0wFN7cWfrwnU5lcci_-vJ93w&usqp=CAU',
+                    synop:'Goddess Listarte, the savior of the super hard-mode world Gairbrunde, summons a hero to her aid. The hero, Seiya Ryuuguuin, holds the cheat-rank status, but he is ridiculously cautious. For instance, he would buy three sets of armor: one to wear, a spare, and a spare for the spare. Beyond keeping an absurd amount of item stock, he remains in his room for muscle training till he reaches the max level and fights slimes at full power just to stay on the safe side.',
+                  },
+                  {
+                    title:'',
+                    trailer: '',
+                    banner:'',
+                    synop:'',
+                  },
+                  {
+                    title:'',
+                    trailer: '',
+                    banner:'',
+                    synop:'',
+                  },
+                  {
+                    title:'',
+                    trailer: '',
+                    banner:'',
+                    synop:'',
+                  },
+
                   ]
     const episodes=[
         {episode:'1',url:'RM9shhtJ_do',title:shows[0].title},
@@ -100,10 +136,32 @@ export default function Movies () {
         {episode:'21',url:'5Lvwi88VyQo',title:shows[3].title},
         {episode:'22',url:'SiB4xsGFjfU',title:shows[3].title},
         {episode:'23',url:'ObjkuJYoOBk',title:shows[3].title},
-        {episode:'24',url:'7ZNCa9yFu-g',title:shows[3].title},
+        {episode:'24',url:'7ZNCa9yFu-g',title:shows[3].title}
+        ,{episode:'1', url:'2SLXT0m4-_I',title:shows[4].title}
+        ,{episode:'2', url:'ZPTwTW-9wcI',title:shows[4].title}
+        ,{episode:'3', url:'Ijg33uxm6pU',title:shows[4].title}
+        ,{episode:'4', url:'kd6yixbZofk',title:shows[4].title}
+        ,{episode:'5', url:'vVr76YhRTws',title:shows[4].title}
+        ,{episode:'6', url:'WvlYOh7nYaU',title:shows[4].title}
+        ,{episode:'7', url:'Y45cFuSF7Rs',title:shows[4].title}
+        ,{episode:'8', url:'Z35nBch7uzM',title:shows[4].title}
+        ,{episode:'9', url:'Er36S4u4C_8',title:shows[4].title}
+        ,{episode:'10', url:'Solj0Hfj23I',title:shows[4].title}
+        ,{episode:'11', url:'L7A0E9WYTnM',title:shows[4].title}
+        ,{episode:'12', url:'1Y7VL7dsooU',title:shows[4].title}
+        ,{episode:'13', url:'BEzNtNpEYkQ',title:shows[4].title}
+        ,{episode:'14', url:'lPWIJHWoueE',title:shows[4].title}
+        ,{episode:'15', url:'vpoNO_Erel8',title:shows[4].title}
+        ,{episode:'16', url:'Tl81h6B57PQ',title:shows[4].title}
+        ,{episode:'17', url:'z6wmgw_2n38',title:shows[4].title}
+        ,{episode:'18', url:'fdy1-mV_X-c',title:shows[4].title}
+        ,{episode:'19', url:'tGiM-vtnn6A',title:shows[4].title}
+        ,{episode:'20', url:'UJ5DaQSJdFw',title:shows[4].title}
+        ,{episode:'21', url:'VGure6WenPM',title:shows[4].title}
+        ,{episode:'22', url:'LMQnqwuhvZA',title:shows[4].title}
+        ,{episode:'23', url:'09u36qoCyKY',title:shows[4].title}
         
     ]
-    const [synopVis, setSynopVis] = useState(false);
     const [currPage, setPage] = useState('YT')
     const [currShow, setCurrShow] = useState(shows[0].title);
     const [search,setSearch] = useState('');
@@ -137,6 +195,7 @@ export default function Movies () {
                                borderColor:'black',
                                backgroundColor:'black',}}>
           <YoutubePlayer
+          play={true}
   height={205}
   width={width}
   videoId={item.url}
@@ -155,6 +214,7 @@ export default function Movies () {
     const showOptions = () => {
       return(
         <FlatList
+        onScroll={()=>{setIsTouched(false)}}
         showsHorizontalScrollIndicator={false}
         horizontal={true}
         data={filterBySearch()}
@@ -174,12 +234,11 @@ export default function Movies () {
           <ImageBackground
           resizeMode="cover"
             style={{
-              
               alignSelf: 'center',
               margin: 10,
               marginTop: 10,
               width: '100%',
-              height: (!isTouched)?205:0,
+              height: (!isTouched)||currShow!==item.title?205:0,
             }}
             source={{
               uri: item.banner,
@@ -197,8 +256,8 @@ export default function Movies () {
           </ImageBackground>
           </Pressable>          
           <YoutubePlayer
-             play={isTouched}
-             height={(isTouched)?205:0}
+             play={(isTouched)&&currShow===item.title?true:false}
+             height={(isTouched)&&currShow===item.title?205:0}
              width={'100%'}
              videoId={item.trailer}
              volume={50}
@@ -218,7 +277,8 @@ export default function Movies () {
               backgroundColor:'#bcb8b6',
               borderRadius:7}}
               android_ripple={{color: 'black', borderless: true}}
-              onPress={()=>{(!isTouched)?setIsTouched(true):setIsTouched(false)}}>
+              onPress={()=>{setCurrShow(item.title);
+                           (!isTouched)?setIsTouched(true):setIsTouched(false)}}>
                 <Text style={{fontWeight:'bold',fontSize:20,color:'white',}}>
                   Trailer
                 </Text>
@@ -232,7 +292,7 @@ export default function Movies () {
               backgroundColor:'#bcb8b6',
               borderRadius:7}}
               android_ripple={{color: 'black', borderless: false}}
-              onPress={()=>{setDisplayEpisodes(true);setCurrShow(item.title)}}>
+              onPress={()=>{setDisplayEpisodes(true);setCurrShow(item.title);setIsTouched(false)}}>
                 <Text style={{fontWeight:'bold',fontSize:20,color:'white',}}>
                   Episodes
                 </Text>
