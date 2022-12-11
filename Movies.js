@@ -169,7 +169,7 @@ export default function Movies () {
             backgroundColor: 'black'
           }}
           android_ripple={{color: 'black', borderless: true}} 
-          onPress={()=>{setDisplayEpisodes(true)}}
+          onPress={()=>{setDisplayEpisodes(true);setCurrShow(item.title)}}
           >
           <ImageBackground
           resizeMode="cover"
