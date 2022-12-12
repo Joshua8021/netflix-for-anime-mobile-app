@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Pressable,
 } from "react-native";
 import { useWindowDimensions } from "react-native";
 import { Dimensions } from "react-native";
@@ -29,16 +30,18 @@ export default function App() {
         padding: 16,
       }}
     >
-      <TouchableHighlight
-        style={{ marginTop: 40 }}
+      <Pressable
+        android_ripple={{ color: "red", borderless: false}}
+        style={{ marginTop: 40,borderRadius:7, }}
         onPress={() => {
           setTab("home");
           drawer.current.closeDrawer();
         }}
       >
         <Text style={styles.btmbutton}>Home</Text>
-      </TouchableHighlight>
-      <TouchableHighlight
+      </Pressable>
+      <Pressable
+        android_ripple={{ color: "red", borderless: false }}
         style={{ marginTop: 40 }}
         onPress={() => {
           setTab("Movies");
@@ -46,8 +49,9 @@ export default function App() {
         }}
       >
         <Text style={styles.btmbutton}>Watch Anime</Text>
-      </TouchableHighlight>
-      <TouchableHighlight
+      </Pressable>
+      <Pressable
+        android_ripple={{ color: "red", borderless: false }}
         style={{ marginTop: 40 }}
         onPress={() => {
           setTab("About");
@@ -55,7 +59,7 @@ export default function App() {
         }}
       >
         <Text style={styles.btmbutton}>About us</Text>
-      </TouchableHighlight>
+      </Pressable>
     </View>
   );
   //if else for tab rendering
@@ -72,7 +76,7 @@ export default function App() {
   return (
     //Main Layout
     <>
-      <StatusBar barStyle={"light-content"} backgroundColor="#bcb8b6" />
+      <StatusBar barStyle={"light-content"} backgroundColor="red" />
       <DrawerLayoutAndroid
         ref={drawer}
         drawerWidth={300}
@@ -80,15 +84,16 @@ export default function App() {
         renderNavigationView={navigationView}
       >
         <View style={styles.header}>
-          <Text style={styles.head}>CRUNCHYLOL</Text>
-          <TouchableHighlight
+          <Text style={styles.head}>MOVIE HUB</Text>
+          <Pressable
+            android_ripple={{ color: "grey", borderless: false }}
             style={{ alignSelf: "auto" }}
             onPress={() => drawer.current.openDrawer()}
           >
             <Text style={styles.menu}>
               <AntDesign name="menu-unfold" size={32} color="white" />
             </Text>
-          </TouchableHighlight>
+          </Pressable>
         </View>
         <View style={styles.container}>
           <View style={styles.container}>{tabViews()}</View>
@@ -120,16 +125,17 @@ const styles = StyleSheet.create({
     fontSize: 18,
     alignSelf: "flex-start",
     alignSelf: "stretch",
-    borderBottomColor: "grey",
+    borderColor: 'red',
     borderWidth: 1,
     width: 280,
-    backgroundColor: "whitesmoke",
+    color:'red',
+    borderRadius: 7,
   },
   header: {
     height: 40,
     borderBottomWidth: 1,
     flexDirection: "row",
-    backgroundColor: "#bcb8b6",
+    backgroundColor: "red",
   },
   menu: {
     alignSelf: "auto",
@@ -143,5 +149,6 @@ const styles = StyleSheet.create({
     flex: 1,
     fontWeight: "bold",
     color: "white",
+    
   },
 });

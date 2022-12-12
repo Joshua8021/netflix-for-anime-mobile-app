@@ -84,6 +84,7 @@ export default function Movies() {
       synop:
         "Goddess Listarte, the savior of the super hard-mode world Gairbrunde, summons a hero to her aid. The hero, Seiya Ryuuguuin, holds the cheat-rank status, but he is ridiculously cautious. For instance, he would buy three sets of armor: one to wear, a spare, and a spare for the spare. Beyond keeping an absurd amount of item stock, he remains in his room for muscle training till he reaches the max level and fights slimes at full power just to stay on the safe side.",
     },
+/*
     {
       title: "",
       trailer: "",
@@ -101,7 +102,7 @@ export default function Movies() {
       trailer: "",
       banner: "",
       synop: "",
-    },
+    },*/
   ];
   const episodes = [
     { episode: "1", url: "RM9shhtJ_do", title: shows[0].title },
@@ -235,6 +236,7 @@ export default function Movies() {
     { episode: "23", url: "kIBeCdhI0ZM", title: shows[6].title },
     { episode: "24", url: "AVXiGxBHxwA", title: shows[6].title },
     { episode: "25", url: "IsyUhu4oUjA", title: shows[6].title },
+
   ];
   const [currPage, setPage] = useState("YT");
   const [currShow, setCurrShow] = useState(shows[0].title);
@@ -358,6 +360,9 @@ export default function Movies() {
                     backgroundColor: "black",
                     marginTop: 160,
                     padding: 3,
+                    textShadowColor: 'rgba(67, 255, 100, 0.85)',
+                    textShadowOffset: {width: +1, height: +1},
+                    textShadowRadius: 150
                   }}
                 >
                   Click to play
@@ -384,8 +389,10 @@ export default function Movies() {
                 margin: 5,
                 padding: 5,
                 justifyContent: "center",
-                backgroundColor: "#bcb8b6",
+                backgroundColor: "black",
                 borderRadius: 7,
+                borderWidth: 3,
+                borderColor: 'red'
               }}
               android_ripple={{ color: "black", borderless: true }}
               onPress={() => {
@@ -412,8 +419,10 @@ export default function Movies() {
                 margin: 5,
                 padding: 5,
                 justifyContent: "center",
-                backgroundColor: "#bcb8b6",
+                backgroundColor: "black",
                 borderRadius: 7,
+                borderWidth: 3,
+                borderColor: 'red'
               }}
               android_ripple={{ color: "black", borderless: false }}
               onPress={() => {
@@ -421,9 +430,12 @@ export default function Movies() {
                 setCurrShow(item.title);
                 setIsTouched(false);
               }}
-            >
-              <Text
-                style={{ fontWeight: "bold", fontSize: 20, color: "white" }}
+            >    
+            <Text
+                style={{ fontWeight: "bold",
+                 fontSize: 20, 
+                 color: "white",
+                 }}
               >
                 Episodes
               </Text>
@@ -442,7 +454,7 @@ export default function Movies() {
           </SafeAreaView>
         )}
       />
-    );
+    );    
   };
   //Bottom buttons layout
   const bottom = () => {
@@ -450,28 +462,31 @@ export default function Movies() {
       alert("Website might show ads while playing video");
     }
     return (
-      <View style={{ flexDirection: "row", backgroundColor: "#bcb8b6" }}>
-        <TouchableHighlight
+      <View style={{ flexDirection: "row", backgroundColor: "white" }}>
+        <Pressable
+          android_ripple={{ color: "red", borderless: false }}
           onPress={() => {
             setPage("YT");
           }}
-          style={{ flex: 1 }}
+          style={{ flex: 1 ,}}
         >
           <Text
             style={{
               fontSize: 16,
-              color: "white",
+              color: "black",
               textAlignVertical: "center",
               textAlign: "center",
               height: 50,
               paddingLeft: 20,
+              borderBottomColor:'red',
               borderBottomWidth: currPage === "YT" ? 3 : null,
             }}
           >
             Youtube Popular
           </Text>
-        </TouchableHighlight>
-        <TouchableHighlight
+        </Pressable>
+        <Pressable
+          android_ripple={{ color: "red", borderless: false }}
           onPress={() => {
             setPage("Web");
           }}
@@ -480,17 +495,18 @@ export default function Movies() {
           <Text
             style={{
               fontSize: 16,
-              color: "white",
+              color: "black",
               textAlignVertical: "center",
               textAlign: "center",
               height: 50,
               paddingLeftt: 50,
+              borderBottomColor:'red',
               borderBottomWidth: currPage === "Web" ? 3 : null,
             }}
           >
             Browse more
           </Text>
-        </TouchableHighlight>
+        </Pressable>
       </View>
     );
   };
@@ -500,12 +516,12 @@ export default function Movies() {
       <>
         <AntDesign
           style={{
-            backgroundColor: "#bcb8b6",
+            backgroundColor: "white",
             borderRightWidth: 2,
             alignSelf: "center",
           }}
           name="search1"
-          size={36}
+          size={39}
           color="black"
         />
         <TextInput
@@ -640,5 +656,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
+  },
+  glowContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    top: 8,
+    bottom: 0,
+    left: 0,
+    right: 4,
   },
 });
