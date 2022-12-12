@@ -301,7 +301,7 @@ export default function Movies() {
         onScroll={() => {
           setIsTouched(false);
         }}
-        initialScrollIndex={1}
+        initialScrollIndex={0}
         showsHorizontalScrollIndicator={false}
         horizontal={true}
         data={filterBySearch()}
