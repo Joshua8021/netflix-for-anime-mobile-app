@@ -1,7 +1,6 @@
 import {
   Modal,
   TextInput,
-  TouchableHighlight,
   SafeAreaView,
   Text,
   View,
@@ -18,7 +17,7 @@ import { WebView } from "react-native-webview";
 import YoutubePlayer from "react-native-youtube-iframe";
 import { AntDesign } from "@expo/vector-icons";
 import { EvilIcons } from "@expo/vector-icons";
-import Dropdown from "react-native-select-dropdown";
+import  Dropdown  from 'react-native-select-dropdown';
 import { Ionicons } from "@expo/vector-icons";
 
 export default function Movies() {
@@ -238,6 +237,7 @@ export default function Movies() {
     { episode: "25", url: "IsyUhu4oUjA", title: shows[6].title },
 
   ];
+
   const [currPage, setPage] = useState("YT");
   const [currShow, setCurrShow] = useState(shows[0].title);
   const [search, setSearch] = useState("");
@@ -247,6 +247,7 @@ export default function Movies() {
   const showsSeparator = () => {
     return <View style={{ width: 10, backgroundColor: "black" }} />;
   };
+
   const filterEpisodesByDropSelect = () => {
     return episodes
       .filter((episodes) => episodes.title === currShow)
@@ -268,11 +269,12 @@ export default function Movies() {
     return (
       <>
         <FlatList
-          style={{ backgroundColor: "black" }}
+          style={{ backgroundColor: "black",
+          height:0}}
           showsHorizontalScrollIndicator={false}
           data={filter()}
           renderItem={({ item }) => (
-            <SafeAreaView
+            <View
               style={{
                 borderColor: "black",
                 backgroundColor: "black",
@@ -290,7 +292,7 @@ export default function Movies() {
                   showClosedCaptions: true,
                 }}
               />
-            </SafeAreaView>
+            </View>
           )}
         />
       </>
@@ -376,6 +378,11 @@ export default function Movies() {
               videoId={item.trailer}
               volume={50}
               playbackRate={1}
+              onChangeState={(event)=>{
+                if(event==='ended'){
+                  setIsTouched(false);
+                }
+              }}
               initialPlayerParams={{
                 cc_lang_pref: "us",
                 showClosedCaptions: true,
@@ -560,33 +567,65 @@ export default function Movies() {
             }}
           >
             <Pressable
-              android_ripple={{ color: "black", borderless: false }}
+              android_ripple={{ color: "red", borderless: true }}
               onPress={() => {
                 setDisplayEpisodes(false);
               }}
               style={{ marginTop: 30 }}
             >
-              <Ionicons name="close-circle-outline" size={40} color="white" />
+              <Ionicons style={{marginBottom: 20,}}name="close-circle-outline" size={40} color="red" />
             </Pressable>
-            <Text
-              style={{
-                fontSize: 18,
-                color: "white",
-                marginTop: 20,
-                marginBottom: 15,
-              }}
-            >
-              Currently playing episode :
-            </Text>
-            <Dropdown
-              dropdownStyle={{ borderRadius: 7, backgroundColor: "#bcb8b6" }}
-              defaultValue={episodeNum}
-              data={filterEpisodesByDropSelect()}
-              onSelect={setEpisodeNum}
-            />
           </View>
           {PrintAll()}
+          
+          <View style={{backgroundColor:'black'}}>
+          <Dropdown
+              data={filterEpisodesByDropSelect()}
+              onSelect={setEpisodeNum}
+              buttonTextStyle={{
+                color: 'red',
+              }}
+              buttonStyle={{
+                marginBottom:230,
+                alignSelf:'center',
+                backgroundColor: 'black',
+                borderColor: 'red',
+                borderRadius: 7,
+                borderWidth: 3,
+                width: '80%',
+              }}
+              dropdownStyle={{
+                backgroundColor: 'black',
+                borderColor: 'red',
+                borderRadius: 7,
+                borderWidth: 3,
+              }}
+              rowStyle={{
+                backgroundColor: 'black',
+                borderBottomColor:'red',
+              }}
+              rowTextStyle={{
+                color: 'red',
+              }}
+              rowTextForSelection={(item,) => {
+                return "Episode: "+item;
+              }}
+              buttonTextAfterSelection={(item,) => {
+                return "Episode: "+item;
+              }}
+              defaultButtonText={"Episode: "+episodeNum}
+              renderDropdownIcon={() => (
+                <AntDesign
+                  style={styles.icon}
+                  color={'red'}
+                  name="downcircleo"
+                  size={20}
+                />
+              )}
+            />
+            </View>
         </Modal>
+        
         <View
           style={{
             height: 40,
@@ -665,5 +704,12 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 4,
+  },
+  dropdown: {
+    height: 50,
+    borderColor: 'gray',
+    borderWidth: 0.5,
+    borderRadius: 8,
+    paddingHorizontal: 8,
   },
 });
